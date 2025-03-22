@@ -1,0 +1,21 @@
+// Resource Management
+int resources_available(Process p) {
+    return p.printers <= available_printers &&
+           p.scanners <= available_scanners &&
+           p.modems <= available_modems &&
+           p.cds <= available_cds;
+}
+
+void allocate_resources(Process p) {
+    available_printers -= p.printers;
+    available_scanners -= p.scanners;
+    available_modems -= p.modems;
+    available_cds -= p.cds;
+}
+
+void free_resources(Process p) {
+    available_printers += p.printers;
+    available_scanners += p.scanners;
+    available_modems += p.modems;
+    available_cds += p.cds;
+}
